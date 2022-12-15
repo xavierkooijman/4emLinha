@@ -1,16 +1,33 @@
 from tkinter import *
 #https://anzeljg.github.io/rin2/book2/2405/docs/tkinter/create_oval.html
 
+
+def criar_board():
+
+    i = IntVar()
+    j = IntVar()
+    for i in range(0,6):
+        for j in range(0,7):
+            canvas = Canvas(window,width=85,height=85, bg="black")
+            canvas.create_oval(20,20,70,70, fill="", outline="white")
+            canvas.grid(row=i,column=j)
+
 window = Tk()
 window.geometry("1200x900")
 window.title("4 em linha")
 window.configure(bg="black")
 
-botao_circular_imagem = PhotoImage(file="circulo_vermelho.ppm")
+criar_board()
 
-img_label = Label(image=botao_circular_imagem)
+label_linha = Label(window, text="Linha: ")
+label_linha.place(x=40,y=600)
+entry_linha = Entry(window)
+entry_linha.place(x=100, y=600)
+label_coluna = Label(window, text="Coluna: ")
+label_coluna.place(x=40,y=650)
+entry_coluna = Entry(window)
+entry_coluna.place(x=100, y=650)
 
-butao_circular = Button(window, image=botao_circular_imagem, borderwidth=0)
-butao_circular.pack(pady=30)
+
 
 window.mainloop()
